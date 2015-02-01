@@ -51,7 +51,7 @@ class Mail
     {
         $model = new ViewModel();
         $model->setTemplate("mailer/{$page}.phtml");
-        $model->setOptions("has_parent", true);
+        $model->setOption("has_parent", true);
         $model->setVariables($data);
         
         return $this->view->render($model);

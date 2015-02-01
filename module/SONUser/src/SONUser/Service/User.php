@@ -37,4 +37,37 @@ class User extends AbstractService
             return $entity;
         }
     }
+    
+    public function activate($key)
+    {
+        $repo = $this->em->getRepository('SONUser\Entity\User');
+        
+        $user = $repo->findOneByActivationKey($key);
+        
+        if($user && !$user->getActive())
+        {
+            $user->setActive(true);
+            
+            $this->em->persist($user);
+            $this->em->flush();
+            
+            return $user;
+        }
+    }
+    
+    public function update(array $data)
+    {
+        $entity = $this->em->getReference($this->entity, $data['id']);
+        
+        if(empty($data['password']))
+            unset ($data['password']);
+        
+        (new Hydrator\ClassMethods())->hydrate($data, $entity);
+        
+        $this->em->persist($entity);
+        $this->em->flush();
+        return $entity;
+    }
+    
+    
 }

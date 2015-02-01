@@ -1,3 +1,17 @@
 <h3>Register</h3>
 
-<p>Olá mundo!</p>
+<?php if (count($this->messages) > 0):?>
+        <?php foreach ($this->messages as $message):?>
+        <p><?php echo $message;?></p>
+        <?php endforeach;?>
+<?php endif; ?>
+
+        
+<?php
+$this->form->setAttribute('action', $this->url('sonuser-register', array('controller'=>'index', 'action'=>'register')));
+$this->form->prepare();
+
+echo $this->form()->openTag($this->form);
+echo $this->formCollection($this->form);
+echo $this->form()->closeTag();
+?>
