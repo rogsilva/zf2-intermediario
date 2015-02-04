@@ -17,6 +17,26 @@ return array(
                     )                    
                 )
             ),
+            //Exemplo rota do tipo Regex
+            /*'sonuser-exemplo' => array(
+                'type' => 'regex',
+                'options' => array(
+                    'route' => '/users/(?P<id>\d+)',
+                    'spec' => '/users/%id%',
+                    'defaults' => array(
+                        'controller' => 'SONUser\Controller\MyController',
+                        'action' => 'myaction'
+                    )
+                )
+            ),*/
+            //Exemplo rota do tipo Wildcard
+            /*'sonuser-exemplo' => array(
+                'type' => 'wildcard',
+                'options' => array(
+                    'key_value_delimiter' => '/',
+                    'param_delimiter' => '/'
+                )
+            ),*/
             'sonuser-activate' => array(
                 'type' => 'Segment',
                 'options' => array(
