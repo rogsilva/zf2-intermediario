@@ -46,12 +46,56 @@ return array(
                         'action' => 'activate'
                     )                    
                 )
-            )
+            ),
+            'sonuser-admin' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin',
+                    'defaults' => array(
+                        'controller' => 'SONUser\Controller\Users',
+                        'action' => 'index'
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/[:controller[/:action[/:id]]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '\d+'
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'SONUser\Controller',
+                                'controller' => 'Users'
+                            )
+                        )
+                    ),
+                    'paginator' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/[:controller[/page/:page]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'page' => '\d+'
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'SONUser\Controller',
+                                'controller' => 'Users'
+                            )
+                        )
+                    ),
+                )
+            ),
         )
     ),
     'controllers' => array(
         'invokables' => array(
             'SONUser\Controller\Index' => 'SONUser\Controller\IndexController',
+            'SONUser\Controller\Users' => 'SONUser\Controller\UsersController',
         )
     ),
     'view_manager' => array(

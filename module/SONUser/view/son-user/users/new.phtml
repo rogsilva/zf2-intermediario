@@ -1,0 +1,14 @@
+<h1>Novo</h1>
+
+<br/>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('sonuser-admin/default', array('controller'=>'users', 'action'=>'new')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+
+?>

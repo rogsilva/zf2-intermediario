@@ -189,6 +189,9 @@ class User
         return $this;
     }
 
-
+    public function toArray()
+    {
+        return (new Hydrator\ClassMethods())->extract($this);
+    }
 
 }
