@@ -1,0 +1,16 @@
+<h1>Login</h1>
+
+<?php if($this->error):?>
+<p>Email ou Senha incorretos!</p>
+<?php endif; ?>
+
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('sonuser-auth'));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+?>

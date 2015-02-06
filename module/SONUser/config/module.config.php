@@ -47,6 +47,26 @@ return array(
                     )                    
                 )
             ),
+            'sonuser-auth' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/auth',
+                    'defaults' => array(
+                        'controller' => 'SONUser\Controller\Auth',
+                        'action' => 'index'
+                    )                    
+                )
+            ),
+            'sonuser-logout' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/auth/logout',
+                    'defaults' => array(
+                        'controller' => 'SONUser\Controller\Auth',
+                        'action' => 'logout'
+                    )                    
+                )
+            ),
             'sonuser-admin' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -96,6 +116,7 @@ return array(
         'invokables' => array(
             'SONUser\Controller\Index' => 'SONUser\Controller\IndexController',
             'SONUser\Controller\Users' => 'SONUser\Controller\UsersController',
+            'SONUser\Controller\Auth' => 'SONUser\Controller\AuthController',
         )
     ),
     'view_manager' => array(
